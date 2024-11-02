@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Disease Detection</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='bg1.jpg') }}");
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            text-align: center;
+            color: #023DFF;
+        }
+        .container {
+            margin-top: 10px;
+            background-color: rgba(237, 237, 237, 0.3);
+            padding: 10px;
+            border-radius: 20px;
+        }
+        .drop-area {
+            border: 2px dashed #007bff;
+            border-radius: 10px;
+            height: 300px;
+            width: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin: 20px auto;
+        }
+        .btn-predict {
+            width: 500px;
+            margin: 20px auto;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #023DFF;
+        }
+        .error {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>PLANT DISEASE DETECTION USING AI</h1>
+        <hr>
+        <h3> Give leaf images of tamato,potato or pepper</h3>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <div class="drop-area" id="drop-area">
+                <p>Drag & Drop Image Here or <br><span class="btn btn-primary" id="upload-button">Browse</span></p>
+                <input type="file" id="file" name="file" style="display: none;" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-predict">Predict</button>
+        </form>
+
+        {% if prediction %}
+            <div class="result">Prediction Result: <strong>{{ prediction }}</strong></div>
+        {% endif %}
+    </div>
+
+    <script>
+        const dropArea = document.getElementById('drop-area');
+        const fileInput = document.getElementById('file');
+        const uploadButton = document.getElementById('upload-button');
+
+        dropArea.addEventListener('dragover', (event) => {
+            event.preventDefault();
+            dropArea.classList.add('active');
+        });
+
+        dropArea.addEventListener('dragleave', () => {
+            dropArea.classList.remove('active');
+        });
+
+        dropArea.addEventListener('drop', (event) => {
+            event.preventDefault();
+            fileInput.files = event.dataTransfer.files;
+        });
+
+        uploadButton.addEventListener('click', () => {
+            fileInput.click();
+        });
+    </script>
+</body>
+</html>
