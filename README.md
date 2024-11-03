@@ -110,7 +110,7 @@ The web application uses Flask as the backend framework. It consists of the foll
 - **Transformation Pipeline**: Images are resized, cropped, and normalized to match the pre-trained ResNet-18 input requirements.
 - **Prediction**: After uploading an image, it’s processed through the model, and the predicted class is displayed on the web interface.
 
-### modeltrain.ipynb
+### reduced_complexity.ipynb
 
 - **Data Transformation and Augmentation**: Random cropping, resizing, and horizontal flipping augment the dataset to enhance generalization.
 - **Training and Validation**: Loss and accuracy for each epoch are logged, and a scheduler adjusts the learning rate based on validation loss.
