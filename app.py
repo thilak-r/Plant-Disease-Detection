@@ -15,7 +15,7 @@ model = models.resnet18(weights='IMAGENET1K_V1')
 model.fc = nn.Linear(model.fc.in_features, 15)  # 15 classes
 
 # Load the state dictionary
-model.load_state_dict(torch.load('crop_disease.pth', map_location=torch.device('cpu')))
+model.load_state_dict(torch.load('crop_disease_simple_undersample2.pth', map_location=torch.device('cpu')))
 model.eval()
 
 # Class labels
