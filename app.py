@@ -15,7 +15,11 @@ model = models.resnet18(weights='IMAGENET1K_V1')
 model.fc = nn.Linear(model.fc.in_features, 15)  # 15 classes
 
 # Load the state dictionary
+<<<<<<< HEAD
 model.load_state_dict(torch.load(r'C:\Users\bhuva\Desktop\Crop_model\Plant-Disease-Detection-AI\crop_disease_simple_undersample2.pth', map_location=torch.device('cpu')))
+=======
+model.load_state_dict(torch.load('crop_disease_simple_undersample2.pth', map_location=torch.device('cpu')))
+>>>>>>> a35a7760b8d9fa40de32f26ca058dc7f2327ca6d
 model.eval()
 
 # Class labels
@@ -69,9 +73,6 @@ def index():
 
     return render_template("index.html")
 
+import os
 if __name__ == "__main__":
-    # Create the uploads folder if it doesn't exist
-    if not os.path.exists(app.config["UPLOAD_FOLDER"]):
-        os.makedirs(app.config["UPLOAD_FOLDER"])
-    
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
