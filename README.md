@@ -120,6 +120,6 @@ The web application uses Flask as the backend framework. It consists of the foll
 ## References
 - PyTorch ResNet Documentation
 - PlantVillage Dataset
- 
-# crop-disease-classification
-# crop-disease-classification
+
+
+under guidance of [Dr Agughasi Victor Ikechukwu](https://github.com/Victor-Ikechukwu)
